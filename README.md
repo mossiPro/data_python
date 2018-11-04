@@ -27,3 +27,15 @@ rappel de l'organisation de notre librairie:
 - parite.py
 - setup.py
 
+La librairie standard **Argparse**  contient de nombreuses méthodes très utiles pour récupérer des arguments.
+- Nous allons l'utiliser en trois temps :
+	- Création d'un objet ArgumentParser()
+	- Lecture des arguments
+	- Renvoi des arguments
+	
+Exécutez la commande :
+	
+	$ python parite.py -e csv
+ou :
+	
+	$ python parite.py --extension csv
