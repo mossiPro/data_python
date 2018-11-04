@@ -3,7 +3,7 @@
 import os 
 
 def launch_analysis(data_file):
-	directory = os.path.dirname(__file__) # la variable __file__ dont la valeur correspond au chemin vers un fichier
+	directory = os.path.dirname(os.path.dirname(__file__)) # la variable __file__ dont la valeur correspond au chemin vers un fichier
 	path_to_file = os.path.join(directory, 'data', data_file)
 
 
