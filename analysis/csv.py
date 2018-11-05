@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 # coding: utf-8
-
+## sudo apt-get install python3-tk
+## pip3 install seaborn
 import os
 import pprint
 import logging as lg
