@@ -39,3 +39,27 @@ Exécutez la commande :
 ou :
 	
 	$ python parite.py --extension csv
+
+### Installer les trois librairies:
+ **Matplotlib**, c'est pour les graphiques. 
+	
+		pip install matplotlib
+		
+ **Numpy**, c'est pour manipuler des données, et plus précisément des séries de nombres.
+		
+		pip install numpy
+		
+**Pandas** introduit un objet très pratique appelé le Dataframe.
+
+		pip install pandas
+
+install also:
+	
+	sudo apt-get install python3-tk
+
+	pip3 install seaborn
+
+
+console test example:
+
+	python3 parite.py -e csv -d current_mps.csv -p
