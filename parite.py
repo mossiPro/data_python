@@ -1,30 +1,39 @@
-#! /user/bin/env Python3
-#coding: utf-8
+#! /usr/bin/env python3
+# coding: utf-8
 
 import argparse
+import logging as lg
 
 import analysis.csv as c_an
 import analysis.xml as x_an
 
- 
-def parse_arguments():
-	# we must create an instance of "ArgumentParser" object 
-	parser = argparse.ArgumentParser() 
-	# we want to add an argument with 'add_argument' attribute of "ArgumentParser" Object
-	parser.add_argument("-e","--extension",help = """ Type of file to analyse. Is it a CSV or a XML?""")
-	# we return parsed arguments  
-	return parser.parse_args() 
+lg.basicConfig(level=lg.DEBUG)
 
+def parse_arguments():
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument("-d","--datafile",help="""CSV file containing pieces of 
+        information about the members of parliament""")
+    parser.add_argument("-e", "--extension", help="""Kind of file to analyse. Is it a CSV or an XML?""")
+    parser.add_argument("-p","--byparty",action='store_true',help="displays a graph for each political party")
+    
+    return parser.parse_args()
 
 def main():
-	# we call parse_argumetns()
-	args = parse_arguments()
-	if args.extension == 'csv':
-		c_an.launch_analysis('current_mps.csv')
-	elif args.extension == 'xml':
-		x_an.launch_analysis('current_mps.csv')
-
-
+    args = parse_arguments() 
+    try:
+        datafile = args.datafile
+        if datafile == None:
+            raise Warning('You must indicate a datafile!')
+    except Warning as e:
+        lg.warning(e)
+    else:
+        if args.extension == 'xml':
+            x_an.launch_analysis(datafile)
+        elif args.extension == 'csv':
+            c_an.launch_analysis(datafile, args.byparty)
+    finally:
+        lg.info('----------------------- Analysis is over ------------------------')
 
 if __name__ == '__main__':
-	main()
+    main()
